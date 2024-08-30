@@ -1,4 +1,4 @@
-# MetaKids cohort # Practical Course Meta3C
+# MetaKids cohort
 
 ![meta3C](images/MK.png)
 
