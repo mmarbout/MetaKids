@@ -4,12 +4,14 @@
 
 clinical trial NCT03296631
 
-Promoteur: Institut Pasteur
+Promoteur:
+
 Institut Pasteur - Paris
 25-28 rue du Docteur Roux
 75724 Paris cedex 15
 
-Responsable(s) Scientifique(s)
+Responsable Scientifique:
+
 Marbouty Martial
 Chargé de Recherche – CNRS
 Laboratoire Régulation Spatiale des Génomes
