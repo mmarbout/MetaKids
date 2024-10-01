@@ -1,6 +1,6 @@
 # MetaKids cohort
 
-![meta3C](images/MK.png)
+![meta3C](images/MK_v2.png)
 
 clinical trial NCT03296631
 
