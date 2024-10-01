@@ -14,7 +14,7 @@ We thank the CRT from Pasteur and especially Olivia Cheny for its implication in
 
 We thank the city of Orsay for its collaboration in the project.
 
-We thank the MD Gweanelle Le Tinier to have accepted to coordinates the project in the day-care centers.
+We thank the MD Gweanelle Le Tinier to have accepted to coordinate the project in the day-care centers.
 
 ## Responsable Scientifique:
 
