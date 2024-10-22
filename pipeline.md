@@ -42,6 +42,8 @@ bash "$master_dir"/reads_treatment.sh "$out_dir"/FastQ/"$sample"/ "$sample"
 
 ## Shotgun reads treatment, assembly and annotation
 
+### remove duplicates PE reads
+
 ### clean SG reads using Trimmomatic and start the Assembly and its annotation
 
 ```sh
