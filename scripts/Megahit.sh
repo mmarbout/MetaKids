@@ -9,7 +9,7 @@ module load megahit/1.2.9
 
 # Path to the global output folder and the folder containing the scripts
 out_dir=/pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/
-master_dir=/pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/Master_scripts/
+master_dir=/pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/scripts/
 
 #path to the input forward reads
 reads_for=$1
