@@ -4,7 +4,7 @@
 #SBATCH --mem=56G
 #SBATCH -n 48
 #SBATCH -N 1
-#SBATCH -o MetaTOR.out.txt -e MetaTOR.err.txt
+#SBATCH -o /pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/log/MetaTOR.out.txt -e /pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/log/MetaTOR.err.txt
 
 module load hmmer/3.3 pplacer/v1.1-alpha19 prodigal/2.6.3 
 module load CheckM/1.1.3 
