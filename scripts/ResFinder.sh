@@ -4,7 +4,7 @@
 #SBATCH -n 5
 #SBATCH -N 1
 #SBATCH --mem=24G
-#SBATCH -o resfinder.out.txt -e resfinder.err.txt
+#SBATCH -o /pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/log/resfinder.out.txt -e /pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/log/resfinder.err.txt
 
 
 module load blast+/2.10.0 kma/1.3.4
