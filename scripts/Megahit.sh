@@ -33,4 +33,10 @@ python "$master_dir"/parse_genome_500pb.py "$out_dir"/assemblage/"$sample"/assem
 
 mv "$out_dir"/assemblage/"$sample"/ "$out_dir"/assemblage/raw/
 
-sbatch "$master_dir"/Anvio_init_MK.sh "$out_dir"/assemblage/"$sample".fa "$sample"
+rm -r "$out_dir"/assemblage/raw/"$sample"/intermediate_contigs/
+
+sbatch "$master_dir"/VirSorter.sh "$sample"
+
+sbatch "$master_dir"/ResFinder.sh "$out_dir"/assemblage/"$sample".fa "$out_dir"/annotations/ResFinder/"$sample"/
+
+sbatch "$master_dir"/Anvio.sh "$out_dir"/assemblage/"$sample".fa "$sample"
