@@ -24,6 +24,10 @@ mkdir -p "$out_dir"/MetaTOR/metator/"$sample"
 mkdir -p "$out_dir"/MetaTOR/metamge/"$sample"
 mkdir -p "$out_dir"/anvio/
 mkdir -p "$out_dir"/coverage/"$sample"/
+mkdir -p "$out_dir"/coverage/log/
+mkdir -p "$out_dir"/BAM/
+mkdir -p "$out_dir"/index/
+mkdir -p "$out_dir"/rapport/
 ```
 
 
