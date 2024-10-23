@@ -13,7 +13,7 @@ module load bbmap
 ################# input ###################
 
 out_dir=/pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/
-master_dir=/pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/Master_scripts/
+master_dir=/pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/scripts/
 
 #sample ID
 sample=$1
