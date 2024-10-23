@@ -4,7 +4,10 @@
 
 clinical trial NCT03296631
 
-## Promoteur:
+## Objectives
+
+
+## Promoteur
 
 Institut Pasteur - Paris
 25-28 rue du Docteur Roux
@@ -16,13 +19,17 @@ We thank the city of Orsay for its collaboration in the project.
 
 We thank the MD Gweanelle Le Tinier to have accepted to coordinate the project in the day-care centers.
 
-## Responsable Scientifique:
+## Responsable Scientifique
 
 Marbouty Martial
 Chargé de Recherche – CNRS
 Laboratoire Régulation Spatiale des Génomes
 UMR3525
 Institut Pasteur, Paris, France.
+
+## Github content
+
+the github contains different files describing the cohort, the metadata associated to each sample and the analysis pipeline. 
 
 ## Contact
 
