@@ -27,22 +27,28 @@ mkdir -p "$out_dir"/coverage/"$sample"/
 ```
 
 
-##########################################################################################################################
+################################################ PRETREATMENT ##########################################################################
 
 ## Raw reads treatment
 
 ### copy the raw from GAIA storage unit and rename them appropriately
 
-NB: do not forget do that by logging on the sftpcampus server
+NB: do not forget to do that by logging on the sftpcampus server
 
 ```sh
-bash "$master_dir"/reads_treatment.sh "$out_dir"/FastQ/"$sample"/ "$sample"
+bash "$master_dir"/reads_init.sh "$out_dir"/FastQ/"$sample"/ "$sample"
 ```
-##########################################################################################################################
+
+### deduplicate the raw reads
+
+```sh
+bash "$master_dir"/reads_dedup.sh "$sample"
+```
+
+
+################################################## ASSEMBLY and ANNOTATIONS ############################################################
 
 ## Shotgun reads treatment, assembly and annotation
-
-### remove duplicates PE reads
 
 ### clean SG reads using Trimmomatic and start the Assembly and its annotation
 
@@ -50,7 +56,7 @@ bash "$master_dir"/reads_treatment.sh "$out_dir"/FastQ/"$sample"/ "$sample"
 sbatch "$master_dir"/Trimmomatic_SG.sh "$sample"
 ```
 
-NB: this script will automatically launch the assembly once the reads have been cleaned and then the annotation (Anvio contig db, resfinder, )
+NB: this script will automatically launch the script to generate the assembly once the reads have been cleaned and then the script for the annotation annotation (Anvio contig db + SG reads Mapping and anvio profile for the reads coverage, resfinder, VirSorter)
 
 ### MGEs annotation
 
@@ -61,7 +67,7 @@ conda activate genomad
 ```
 
 ```sh
-sbatch "$master_dir"/Genomad.sh "$out_dir"/assemblage/"$sample".fa "$out_dir"/annotations/genomad/"$sample"/
+sbatch "$master_dir"/Genomad.sh "$out_dir"/assemblage/"$sample".fa "$out_dir"/annotations/genomad/"$sample"/ "$sample"
 ```
 
 ```sh
@@ -69,21 +75,9 @@ conda deactivate
 ```
 
 
-### AMR annotation
+################################################### HiC and BINNING #######################################################################
 
-```sh
-sbatch "$master_dir"/ResFinder.sh "$out_dir"/assemblage/"$sample".fa "$out_dir"/annotations/ResFinder/"$sample"/
-```
-
-### anvio DB, 
-
-```sh
-sbatch "$master_dir"/Anvio_init_MK.sh /pasteur/zeus/projets/p02/rsg_fast/mmarbout/database/ "$out_dir"/assemblage/"$sample".fa "$sample" "$out_dir"/FastQ/ "$out_dir"
-```
-
-##########################################################################################################################
-
-## HiC reads process and MetaTOR pipeline for the first binning
+## HiC reads process and MetaTOR pipeline
 
 ### clean HiC reads using Trimmomatic and digest them
 
@@ -104,69 +98,19 @@ do
 done
 ```
 
-### predigest the HiC reads
-
-
-```sh
-for i in $(ls /pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/FastQ/temp/ | grep "$sample" | grep "clean" | grep "Arima" | sed 's/_dedup/ /' | awk '{print $1}' | sort -u)
-do
-
-	sbatch "$master_dir"/reads_digestion.sh "$out_dir"/FastQ/temp/"$i"_dedup_R1.fq.gz "$out_dir"/FastQ/temp/"$i"_dedup_R2.fq.gz "$out_dir"/FastQ/HiC_digested/"$i" DpnII,HinfI 
-
-done
-```
-
-
-
-
-
-## coverage files
-
-
-### RPKM data files
-
-count the number of hits per contigs
-
-### reads mapping back and BAM files generation
-
-
-
-use the script in perl to process BAM files
-
-```sh
-"$master_dir"/jgi_summarize_bam_contig_depths --outputDepth "$out_dir"/coverage/"$sample"/coverage_"$sample".txt --showDepth --minContigLength 500 "$out_dir"/BAM/*.bam
-```
-
-move outputfiles and process the data
-
-```sh
-mv "$out_dir"/BAM/"$sample"*.depth "$out_dir"/coverage/"$sample"/
-```
-
-
-
-## Binning of MAGs and MGEs using metator
-
-### MetaTOR
+### Binning of MAGs using MetaTOR
 
 launch metator pipeline (do not forget to activate the conda environment)
 
 ```sh
-conda activate metator 
+micromamba activate metator_v2
 ```
 
 ```sh
-sbatch "$master_dir"/MetaTOR.sh "$out_dir"/MetaTOR/metator/"$sample"/ "$out_dir"/assemblage/"$sample".fa $(ls "$out_dir"/FastQ/HiC_digested/ | sed 's/_clean/ /' | grep "$sample" | awk '{print $1}' | sort -u | awk '{print "'$out_dir'""/FastQ/HiC_digested/"$1"_cleaned_R1.fq.gz"}' | paste -s | sed 's/\t/,/g') $(ls "$out_dir"/FastQ/HiC_digested/ | sed 's/_clean/ /' | grep "$sample" | awk '{print $1}' | sort -u | awk '{print "'$out_dir'""/FastQ/HiC_digested/"$1"_cleaned_R2.fq.gz"}' | paste -s | sed 's/\t/,/g')
+sbatch "$master_dir"/MetaTOR.sh "$out_dir"/MetaTOR/metator/"$sample"/ "$out_dir"/assemblage/"$sample".fa $(ls "$out_dir"/FastQ/HiC_digested/ | sed 's/_clean/ /' | grep "$sample" | awk '{print $1}' | sort -u | awk '{print "'$out_dir'""/FastQ/HiC_digested/"$1"_R1.fq.gz"}' | paste -s | sed 's/\t/,/g') $(ls "$out_dir"/FastQ/HiC_digested/ | sed 's/_clean/ /' | grep "$sample" | awk '{print $1}' | sort -u | awk '{print "'$out_dir'""/FastQ/HiC_digested/"$1"_R2.fq.gz"}' | paste -s | sed 's/\t/,/g')
 ```
 
-### MetaMGE
-
-first, select the contigs
-
-```sh
-cat "$out_dir"/annotations/genomad/"$sample"/"$sample"_summary/"$sample"_plasmid_summary.tsv | sed '1d' | awk '{print $1}' | grep -v "provirus" > "$out_dir"/MetaTOR/metamge/"$sample"/contig_mge.txt
-cat "$out_dir"/annotations/genomad/"$sample"/"$sample"_summary/"$sample"_virus_summary.tsv | sed '1d' | awk '{print $1}' | grep -v "provirus" >> "$out_dir"/MetaTOR/metamge/"$sample"/contig_mge.txt
-```
+### Binning of MGE using MetaTOR
 
 launch the pipeline MetaMGE
 
@@ -175,7 +119,7 @@ sbatch "$master_dir"/MetaMGE.sh \
 	"$out_dir"/MetaTOR/metamge/"$sample"/ \
 	"$out_dir"/MK/MetaTOR/metator/"$sample"/ \
 	"$out_dir"/MetaTOR/metamge/"$sample"/contig_mge.txt \
-	"$out_dir"/assemblage/"$sample".fa \
+	"$out_dir"/MetaTOR/metamge/"$sample"/contig_mge.fa \
 	"$out_dir"/MetaTOR/metator/"$sample"/ \
 	alignment 0.8
 ```
@@ -193,6 +137,15 @@ sbatch "$master_dir"/checkM.sh "$out_dir"/MetaTOR/metator/"$sample"/final_bin/ "
 ### construction of a large contact map encompassing the MGEs and the MAGs
 
 
+### assignment of MGE to their host and basic analysis
+
+
+### creation of file for Anvio visualization (script binning_annotation)
+
+1- create a binning.txt file containing the binning data (only encompass MAGs, vMAGS and pMAGs)
+ContigXX	bin_XX
+
+2- create a tab delimited file with some annotations
 
 
 ## Contact
