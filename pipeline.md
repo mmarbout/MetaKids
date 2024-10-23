@@ -8,7 +8,7 @@ this set of scripts allows to analyze metagenomic data from the MetaKids cohort.
 
 ```sh
 out_dir=/pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/
-master_dir=/pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/Master_scripts/
+master_dir=/pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/scripts/
 sample=XX
 ```
 
@@ -56,7 +56,7 @@ bash "$master_dir"/reads_dedup.sh "$sample"
 sbatch "$master_dir"/Trimmomatic_SG.sh "$sample"
 ```
 
-NB: this script will automatically launch the script to generate the assembly once the reads have been cleaned and then the script for the annotation annotation (Anvio contig db + SG reads Mapping and anvio profile for the reads coverage, resfinder, VirSorter)
+NB: this script will automatically launch the script to generate the assembly once the reads have been cleaned and then the different scripts to annotate your assembly (Anvio, resfinder, VirSorter)
 
 ### MGEs annotation
 
