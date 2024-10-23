@@ -10,7 +10,7 @@ sample=$2
 
 
 out_dir=/pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/
-master_dir=/pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/Master_scripts/
+master_dir=/pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/scripts/
 
 mkdir -p "$out_fold"/tmp/
 
