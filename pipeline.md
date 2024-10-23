@@ -80,10 +80,12 @@ conda deactivate
 NPO - conda activate metator
 
 ```sh
-conda activate metator
-sample=XX
+conda activate test_meta
 ```
 
+```sh
+sample=MKXX
+```
 
 ```sh
 for i in $(ls /pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/FastQ/"$sample"/ | grep "MK" | grep "Arima" | sed 's/_R/ /' | awk '{print $1}' | sort -u)
@@ -99,7 +101,11 @@ done
 launch metator pipeline (do not forget to activate the conda environment)
 
 ```sh
-micromamba activate metator_v2
+conda activate test_meta
+```
+
+```sh
+sample=MKXX
 ```
 
 ```sh
