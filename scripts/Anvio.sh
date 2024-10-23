@@ -21,7 +21,7 @@ db=/pasteur/zeus/projets/p02/rsg_fast/mmarbout/database/
 out_dir=/pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/
 
 #Master script diretory
-master_dir=/pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/Master_scripts/
+master_dir=/pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/scripts/
 
 module load R/3.6.2
 module load mcl/14-137 muscle/3.8.31 diamond/2.0.4 blast+/2.10.0 MetaGeneAnnotator/2008-8-19
