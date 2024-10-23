@@ -46,7 +46,7 @@ bash "$master_dir"/reads_init.sh "$out_dir"/FastQ/"$sample"/ "$sample"
 ### deduplicate the raw reads
 
 ```sh
-bash "$master_dir"/reads_dedup.sh "$sample"
+sbatch "$master_dir"/reads_dedup.sh "$sample"
 ```
 
 
