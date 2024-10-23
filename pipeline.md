@@ -2,7 +2,7 @@
 
 this set of scripts allows to analyze metagenomic data from the MetaKids cohort.
 
-![pipeline](images/pipeline.png)
+![pipeline](images/pipeline.jpeg)
 
 ## Before starting
 
