@@ -30,9 +30,6 @@ mkdir -p "$out_dir"/index/
 mkdir -p "$out_dir"/rapport/
 ```
 
-
-################################################ PRETREATMENT ##########################################################################
-
 ## Raw reads treatment
 
 ### copy the raw from GAIA storage unit and rename them appropriately
@@ -48,9 +45,6 @@ bash "$master_dir"/reads_init.sh "$out_dir"/FastQ/"$sample"/ "$sample"
 ```sh
 sbatch "$master_dir"/reads_dedup.sh "$sample"
 ```
-
-
-################################################## ASSEMBLY and ANNOTATIONS ############################################################
 
 ## Shotgun reads treatment, assembly and annotation
 
@@ -78,8 +72,6 @@ sbatch "$master_dir"/Genomad.sh "$out_dir"/assemblage/"$sample".fa "$out_dir"/an
 conda deactivate
 ```
 
-
-################################################### HiC and BINNING #######################################################################
 
 ## HiC reads process and MetaTOR pipeline
 
