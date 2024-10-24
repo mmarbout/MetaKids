@@ -42,7 +42,7 @@ NB: do not forget to do that by logging on the sftpcampus server
 bash "$master_dir"/reads_init.sh "$out_dir"/FastQ/"$sample"/ "$sample"
 ```
 
-### deduplicate the raw reads
+### deduplicate the raw reads (do not forget to do FastQC before and after deduplication and to remove host reads)
 
 ```sh
 sbatch "$master_dir"/reads_dedup.sh "$sample"
@@ -50,7 +50,7 @@ sbatch "$master_dir"/reads_dedup.sh "$sample"
 
 ## Shotgun reads treatment, assembly and annotation
 
-### clean SG reads using Trimmomatic and start the Assembly and its annotation
+### clean SG reads using Trimmomatic, remove host reads and start the Assembly and its annotation
 
 ```sh
 sbatch "$master_dir"/Trimmomatic_SG.sh "$sample"
