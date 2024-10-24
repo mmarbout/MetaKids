@@ -90,10 +90,10 @@ sample=MKXX
 ```
 
 ```sh
-for i in $(ls /pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/FastQ/"$sample"/ | grep "MK" | grep "dedup" |  grep "Arima" | sed 's/_R/ /' | awk '{print $1}' | sort -u)
+for i in $(ls /pasteur/zeus/projets/p02/rsg_fast/mmarbout/projets/MK/FastQ/"$sample"/ | grep "MK" | grep "dedup" |  grep "Arima" | sed 's/_dedup/ /' | awk '{print $1}' | sort -u)
 do
 
-	sbatch "$master_dir"/Trimmomatic_HiC.sh "$out_dir"/FastQ/temp/ "$out_dir"/FastQ/"$sample"/"$i"_R1.fq.gz "$out_dir"/FastQ/"$sample"/"$i"_R2.fq.gz "$i" 
+	sbatch "$master_dir"/Trimmomatic_HiC.sh "$out_dir"/FastQ/temp/ "$out_dir"/FastQ/"$sample"/"$i"_dedup_R1.fq.gz "$out_dir"/FastQ/"$sample"/"$i"_dedup_R2.fq.gz "$i" 
 
 done
 ```
