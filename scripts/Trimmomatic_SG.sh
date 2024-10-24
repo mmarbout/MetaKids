@@ -22,7 +22,7 @@ sample=$1
 
 echo "cleaning reads"
 
-for i in $(ls "$out_dir"/FastQ/"$sample"/ | grep "MK" | grep "Shot" | sed 's/_R/ /' | awk '{print $1}' | sort -u)
+for i in $(ls "$out_dir"/FastQ/"$sample"/ | grep "MK" | grep "dedup" | grep "Shot" | sed 's/_R/ /' | awk '{print $1}' | sort -u)
 do
 
 	Trimmomatic PE -threads 32 "$out_dir"/FastQ/"$sample"/"$i"_dedup_R1.fq.gz "$out_dir"/FastQ/"$sample"/"$i"_dedup_R2.fq.gz \
