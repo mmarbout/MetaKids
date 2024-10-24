@@ -32,8 +32,8 @@ clumpify.sh dedupe=t optical=f \
 	out1="$out_dir"/FastQ/"$sample"/"$i"_dedup_R1.fq.gz \
 	out2="$out_dir"/FastQ/"$sample"/"$i"_dedup_R2.fq.gz
 
-	#rm "$out_dir"/FastQ/"$sample"/"$i"_R1.fq.gz
-	#rm "$out_dir"/FastQ/"$sample"/"$i"_R2.fq.gz
+	rm "$out_dir"/FastQ/"$sample"/"$i"_R1.fq.gz
+	rm "$out_dir"/FastQ/"$sample"/"$i"_R2.fq.gz
 
 done
 
