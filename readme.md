@@ -26,11 +26,11 @@ We thank the MD Gweanelle Le Tinier to have accepted to coordinate the project i
 
 ## Responsable Scientifique
 
-Marbouty Martial
-Chargé de Recherche – CNRS
-Laboratoire Régulation Spatiale des Génomes
-UMR3525
-Institut Pasteur, Paris, France.
+- Marbouty Martial
+- Directeur de Recherche – CNRS
+- Laboratoire Régulation Spatiale des Génomes
+- UMR3525
+- Institut Pasteur, Paris, France.
 
 ## Github content
 
