@@ -9,8 +9,8 @@ this set of scripts allows to analyze metagenomic data from the MetaKids cohort.
 ### set the different arguments and mandatory directories
 
 ```sh
-out_dir=/pasteur/helix/projects/rsg_fast/mmarbout/projets/MK/
-master_dir=/pasteur/helix/projects/rsg_fast/mmarbout/projets/MK/scripts/
+out_dir=/pasteur/helix/projects/rsg_fast/mmarbout/projets/MetaG/MK/
+master_dir=/pasteur/helix/projects/rsg_fast/mmarbout/projets/MetaG/MK/scripts/
 sample=XX
 ```
 
