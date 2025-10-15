@@ -111,7 +111,7 @@ sample=MKXX
 ```
 
 ```sh
-sbatch "$master_dir"/MetaTOR.sh "$out_dir"/MetaTOR/metator/"$sample"/ "$out_dir"/assemblage/"$sample".fa $(ls "$out_dir"/FastQ/HiC_digested/ | sed 's/_clean/ /' | grep "$sample" | awk '{print $1}' | sort -u | awk '{print "'$out_dir'""/FastQ/HiC_digested/"$1"_R1.fq.gz"}' | paste -s | sed 's/\t/,/g') $(ls "$out_dir"/FastQ/HiC_digested/ | sed 's/_clean/ /' | grep "$sample" | awk '{print $1}' | sort -u | awk '{print "'$out_dir'""/FastQ/HiC_digested/"$1"_R2.fq.gz"}' | paste -s | sed 's/\t/,/g')
+sbatch "$master_dir"/MetaTOR.sh "$out_dir"/MetaTOR/metator/"$sample"/ "$out_dir"/assemblage/"$sample".fa $(ls "$out_dir"/FastQ/HiC_digested/ | sed 's/_R/ /' | grep "$sample" | awk '{print $1}' | sort -u | awk '{print "'$out_dir'""/FastQ/HiC_digested/"$1"_R1.fq.gz"}' | paste -s | sed 's/\t/,/g') $(ls "$out_dir"/FastQ/HiC_digested/ | sed 's/_R/ /' | grep "$sample" | awk '{print $1}' | sort -u | awk '{print "'$out_dir'""/FastQ/HiC_digested/"$1"_R2.fq.gz"}' | paste -s | sed 's/\t/,/g')
 ```
 
 ### Binning of MGE using MetaTOR
